@@ -7,8 +7,7 @@ import { Line_chart } from "@/components/charts/line_chart";
 import UserCard from "@/components/miscellaneous/UserCard";
 import Link from "next/link";
 import { redirect} from 'next/navigation'
-// import axios from 'axios';
-// import { updateQueryParam } from "@/lib/utils"; 
+
 
 import CookieModal from '@/components/miscellaneous/CookieModal'
 

@@ -3,8 +3,7 @@ import React from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { redirect } from "next/navigation";
-import { getCookie, getCookies, setCookie, deleteCookie, hasCookie } from 'cookies-next/client';
-import { updateQueryParam } from '@/lib/utils';
+
 
 
 const UserCard = () => {
@@ -17,7 +16,7 @@ const UserCard = () => {
   
   if (error) return <div>{error.message}</div>;
 
-  user.name && setCookie('user',user.name,{path:'/'})
+
   
   return (
     <>
