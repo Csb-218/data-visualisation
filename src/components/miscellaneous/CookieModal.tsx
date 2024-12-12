@@ -1,11 +1,6 @@
 'use client'
 import React, { useState, useRef, useEffect } from "react";
 import ReactDOM from "react-dom";
-// import { useUser } from '@auth0/nextjs-auth0/client';
-// import axios from 'axios';
-// import { updateQueryParam } from "@/lib/utils";
-// import { useRouter,useSearchParams } from 'next/navigation'
-// import { cookies } from 'next/headers';
 import {setCookie,hasCookie} from 'cookies-next'
 
 
@@ -15,36 +10,11 @@ const ModalActionButtons = () => {
     const wrapperRef = useRef<HTMLDivElement | null>(null);
 
 
-    // const searchParams = useSearchParams();
-
     async function handlePreference(preference: boolean) {
 
         if (preference) {
 
-            // const options = {
-            //     baseURL: process.env.NEXT_PUBLIC_BASE_URL,
-            //     method: 'post',
-            //     url: `/users/add`,
-            //     data: {
-            //         "name": user.name,
-            //         "email": user.email,
-            //         "preference": "yes"
-            //     }
-            // }
-
-            // const { status } = await axios.request(options)
-
-            // if (status === 200) {
-            //     setIsShowing(false)
-            //     // updateQueryParam('cookieConsent','true')
-            //     if (user?.email) {
-            //         router.replace(updateQueryParam('cookieUser', user.email), { scroll: false })
-            //     }
-
-            // }
-
-
-
+        
             setCookie('age','',{
                 maxAge:43200,
                 path:'/'
