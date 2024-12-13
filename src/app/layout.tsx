@@ -1,4 +1,5 @@
-import { UserProvider } from '@auth0/nextjs-auth0/client';
+
+// import { UserProvider } from '@auth0/nextjs-auth0/client';
 import type { Metadata } from "next";
 import StoreProvider from './storeProvider'
 import localFont from "next/font/local";
@@ -27,16 +28,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <UserProvider>
-        <StoreProvider>
+      {/* <UserProvider> */}
+
+         <StoreProvider>
            <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
       </body>
         </StoreProvider>
+
+       
         
-      </UserProvider>
+      {/* </UserProvider> */}
      
     </html>
   );

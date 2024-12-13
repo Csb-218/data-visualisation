@@ -1,26 +1,28 @@
 
 'use client'
 
-import { useUser, } from '@auth0/nextjs-auth0/client'
+// import { useUser, } from '@auth0/nextjs-auth0/client'
 import  HorBar  from "@/components/charts/hor_bar";
 import  Line_chart  from "@/components/charts/line_chart";
 import UserCard from "@/components/miscellaneous/UserCard";
-import Link from "next/link";
-import { redirect} from 'next/navigation'
-
+// import Link from "next/link";
+// import { redirect} from 'next/navigation'
+import {  signIn} from 'next-auth/react'
 
 import CookieModal from '@/components/miscellaneous/CookieModal'
 
 
 export default function Home() {
 
-  const { user, isLoading, error } = useUser();
+  // const {status} = useSession()
 
-  if (isLoading) return <div>Loading...</div>;
+  // const { user, isLoading, error } = useUser();
 
-  if (!user) redirect("/api/auth/login");
+  // if (status === 'loading') return <div>Loading...</div>;
 
-  if (error) return <div>{error.message}</div>;
+  // if (status === 'unauthenticated') redirect("/api/login");
+
+  // if (status === ) return <div>{error.message}</div>;
 
   return (
     (
@@ -29,7 +31,8 @@ export default function Home() {
 
           <CookieModal />
           <UserCard />
-          <Link href="/api/auth/logout">Logout</Link>
+          <button onClick={()=>signIn("google")}>Logout</button>
+          {/* <Link href="/api/auth/logout">Logout</Link> */}
 
           <HorBar />
           <Line_chart />
