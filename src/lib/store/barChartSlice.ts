@@ -6,14 +6,16 @@ interface barChartState {
     selectedFeature : feature | null,
     selectedAge : string | null,
     selectedGender : string | null,
-    featureChart : featureChart | null
+    featureChart : featureChart | null,
+    features: feature[]
 }
 
 const initialState : barChartState = {
     selectedFeature : null  ,
     selectedAge : null ,
     selectedGender : null ,
-    featureChart : null
+    featureChart : null,
+    features:[]
 }
 
 const barChartSlice = createSlice({
@@ -37,9 +39,14 @@ const barChartSlice = createSlice({
         setFeatureChart:(state ,action:PayloadAction<featureChart | null>)=>{
             state.featureChart = action.payload
  
+        } ,
+
+        setFeatures:(state ,action:PayloadAction<feature[]>)=>{
+            state.features = action.payload
+ 
         } 
     }
 }) 
 
-export const {setFeature , setGender , setAge , setFeatureChart} = barChartSlice.actions ;
+export const {setFeature , setGender , setAge , setFeatureChart , setFeatures} = barChartSlice.actions ;
 export default barChartSlice.reducer ;
