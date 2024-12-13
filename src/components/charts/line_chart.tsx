@@ -344,7 +344,7 @@ export function VerticalLineChart() {
 
 export default function Line_chart(){
     return(
-    <Suspense>
+    <Suspense fallback={<>Loading ...</>}>
         <VerticalLineChart/>
     </Suspense>
     )

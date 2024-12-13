@@ -152,7 +152,7 @@ const chartConfig = {
 
 export default function HorBar(){
     return (
-        <Suspense>
+        <Suspense fallback={<>Loading ...</>}>
         <HorizontalBarChart/>
     </Suspense>
     )

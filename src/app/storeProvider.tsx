@@ -41,8 +41,8 @@ function StoreProviderComponent({children}: {children: React.ReactNode}) {
 export default function StoreProvider({children}: {children: React.ReactNode}){
 
   return(
-    <Suspense>
-      <StoreProviderComponent>
+    <Suspense fallback={<>Loading ...</>}>
+      <StoreProviderComponent >
       {children}
       </StoreProviderComponent>
     </Suspense>
