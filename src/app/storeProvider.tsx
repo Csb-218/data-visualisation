@@ -1,11 +1,11 @@
 'use client'
-import { useRef,useEffect } from 'react'
+import { useRef,useEffect,Suspense } from 'react'
 import { Provider } from 'react-redux'
 import { makeStore, AppStore } from '@/lib/store'
 import { useSearchParams } from 'next/navigation';
 import { setAge , setGender } from '@/lib/store/barChartSlice'
 
-export default function StoreProvider({children}: {children: React.ReactNode}) {
+function StoreProviderComponent({children}: {children: React.ReactNode}) {
 
   const storeRef = useRef<AppStore | null>(null)
   const searchParams = useSearchParams();
@@ -36,4 +36,16 @@ export default function StoreProvider({children}: {children: React.ReactNode}) {
   }
 
   return <Provider store={storeRef.current}>{children}</Provider>
+}
+
+export default function StoreProvider({children}: {children: React.ReactNode}){
+
+  return(
+    <Suspense>
+      <StoreProviderComponent>
+      {children}
+      </StoreProviderComponent>
+    </Suspense>
+
+  )
 }

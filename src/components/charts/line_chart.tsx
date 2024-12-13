@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useMemo, useRef} from "react"
+import { useState, useEffect, useMemo, useRef,Suspense} from "react"
 import { Area, CartesianGrid, XAxis, YAxis, ComposedChart, ReferenceArea, ResponsiveContainer } from "recharts"
 import { Button } from "@/components/ui/button"
 import {
@@ -28,39 +28,9 @@ import axios from 'axios'
 
 
 
-// const seedRandom = (seed: number) => {
-//     const x = Math.sin(seed++) * 10000;
-//     return x - Math.floor(x);
-// };
 
 
-
-// export function simulateData(start = '2024-01-01T00:00:00Z', end = '2024-01-02T00:00:00Z'): DataPoint[] {
-//     // const data = await fetch('http://localhost:3000/api/features')
-
-//     // const chartData = await data.json()
-//     const simulatedData = []
-//     let baseValue = 50;
-//     for (let currentDate = new Date(start); currentDate <= new Date(end); currentDate.setTime(currentDate.getTime() + 600000)) {
-//         const seed = currentDate.getTime();
-//         baseValue = Math.max(
-//             (baseValue + 0.5 * (currentDate.getTime() - new Date(start).getTime()) / (new Date(end).getTime() - new Date(start).getTime()) * 100 +
-//                 (seedRandom(seed) - 0.5) * 20 +
-//                 (seedRandom(seed + 1) < 0.1 ? (seedRandom(seed + 2) - 0.5) * 50 : 0) +
-//                 Math.sin(currentDate.getTime() / 3600000) * 10) *
-//             (1 + (seedRandom(seed + 3) - 0.5) * 0.2),
-//             1
-//         );
-//         simulatedData.push({
-//             date: currentDate.toISOString(),
-//             events: Math.max(Math.floor(baseValue), 1)
-//         });
-//     }
-
-//     return simulatedData;
-// }
-
-export function Line_chart() {
+export function VerticalLineChart() {
 
     const { selectedFeature, selectedAge, selectedGender ,featureChart } = useSelector((state: RootState) => state.barChart);
 
@@ -91,7 +61,7 @@ export function Line_chart() {
             setOriginalData(featureChart.chartData);
             setStartTime(featureChart.chartData[0].date);
             setEndTime(featureChart.chartData[featureChart.chartData.length - 1].date);
-            console.log('set times')
+
         }
        
     }, [featureChart]);
@@ -244,7 +214,6 @@ export function Line_chart() {
 
                 dispatch(setFeatureChart(initialData))
 
-                console.log(selectedAge,selectedFeature,selectedGender)
             }
 
             fetchChart()
@@ -371,4 +340,13 @@ export function Line_chart() {
             </CardContent>
         </Card>
     )
+}
+
+export default function Line_chart(){
+    return(
+    <Suspense>
+        <VerticalLineChart/>
+    </Suspense>
+    )
+    
 }

@@ -33,7 +33,6 @@ const barChartSlice = createSlice({
 
         setGender:(state, action:PayloadAction<string | null>)=>{
             state.selectedGender = action.payload
-            console.log(action.payload)
         },
 
         setFeatureChart:(state ,action:PayloadAction<featureChart | null>)=>{

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from "react";
+import { useEffect,Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Bar, BarChart, XAxis, YAxis, CartesianGrid, LabelList, } from "recharts"
 import {
@@ -35,7 +35,7 @@ const chartConfig = {
 
 
 
-export function HorBar() {
+ function HorizontalBarChart() {
 
     const router = useRouter()
     const {features} = useSelector((state:RootState) => state.barChart)
@@ -149,4 +149,15 @@ export function HorBar() {
         </Card>
     )
 }
+
+export default function HorBar(){
+    return (
+        <Suspense>
+        <HorizontalBarChart/>
+    </Suspense>
+    )
+    
+}
+
+
 

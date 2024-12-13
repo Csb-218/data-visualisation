@@ -2,8 +2,8 @@
 'use client'
 
 import { useUser, } from '@auth0/nextjs-auth0/client'
-import { HorBar } from "@/components/charts/hor_bar";
-import { Line_chart } from "@/components/charts/line_chart";
+import  HorBar  from "@/components/charts/hor_bar";
+import  Line_chart  from "@/components/charts/line_chart";
 import UserCard from "@/components/miscellaneous/UserCard";
 import Link from "next/link";
 import { redirect} from 'next/navigation'
