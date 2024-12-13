@@ -6,23 +6,30 @@ import  HorBar  from "@/components/charts/hor_bar";
 import  Line_chart  from "@/components/charts/line_chart";
 import UserCard from "@/components/miscellaneous/UserCard";
 // import Link from "next/link";
-// import { redirect} from 'next/navigation'
-import {  signIn} from 'next-auth/react'
+import { Button } from "@/components/ui/button"
+import {  signIn,signOut,useSession } from 'next-auth/react'
 
 import CookieModal from '@/components/miscellaneous/CookieModal'
 
 
 export default function Home() {
 
-  // const {status} = useSession()
+  const {status} = useSession()
 
-  // const { user, isLoading, error } = useUser();
 
-  // if (status === 'loading') return <div>Loading...</div>;
 
-  // if (status === 'unauthenticated') redirect("/api/login");
+  if (status === 'loading') return <div>Loading...</div>;
 
-  // if (status === ) return <div>{error.message}</div>;
+  if (status === 'unauthenticated') 
+    return(
+    <div >
+      <Button variant="secondary"  onClick={()=>signIn()}>Login</Button>
+      
+    </div>
+  )
+    
+
+
 
   return (
     (
@@ -31,9 +38,7 @@ export default function Home() {
 
           <CookieModal />
           <UserCard />
-          <button onClick={()=>signIn("google")}>Logout</button>
-          {/* <Link href="/api/auth/logout">Logout</Link> */}
-
+          <Button variant="secondary"  onClick={()=>signOut()}>Logout</Button>
           <HorBar />
           <Line_chart />
 

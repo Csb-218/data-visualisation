@@ -1,5 +1,5 @@
 
-// import { UserProvider } from '@auth0/nextjs-auth0/client';
+import { SessionProvider } from 'next-auth/react'
 import type { Metadata } from "next";
 import StoreProvider from './storeProvider'
 import localFont from "next/font/local";
@@ -28,20 +28,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* <UserProvider> */}
-
-         <StoreProvider>
-           <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-        </StoreProvider>
-
-       
-        
-      {/* </UserProvider> */}
-     
+      <StoreProvider>
+        <SessionProvider>
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          >
+            {children}
+          </body>
+        </SessionProvider>
+      </StoreProvider>
     </html>
   );
 }
