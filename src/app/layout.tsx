@@ -4,6 +4,7 @@ import StoreProvider from './storeProvider'
 import localFont from "next/font/local";
 import "./globals.css";
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import Wrapper from "./Wrapper";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,16 +30,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <StoreProvider>
-        <GoogleOAuthProvider clientId="218070191450-0bd5g1f1blsr3erb8hl7a8ld0i9odr0i.apps.googleusercontent.com">
+        <Wrapper>
+           <GoogleOAuthProvider clientId="218070191450-0bd5g1f1blsr3erb8hl7a8ld0i9odr0i.apps.googleusercontent.com">
            <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
           >
             {children}
           </body>
         </GoogleOAuthProvider>
+        </Wrapper>
       </StoreProvider>
-
-
     </html>
   );
 }
