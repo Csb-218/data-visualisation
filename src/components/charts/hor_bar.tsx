@@ -24,7 +24,7 @@ import { getRandomHexColor } from "@/lib/utils"
 import { useDispatch,useSelector } from 'react-redux'
 import { AppDispatch,RootState } from '@/lib/store'
 import { setFeature , setFeatures } from '@/lib/store/barChartSlice'
-import { setCookie } from 'cookies-next'
+import { setCookie ,hasCookie } from 'cookies-next'
 
 const chartConfig = {
     time_spent: {
@@ -48,10 +48,14 @@ const chartConfig = {
         dispatch(() => dispatch(setFeature(feature)))
         router.push(url, { scroll: false })
 
-        setCookie('feature', feature, {
+        if(hasCookie('feature')){
+            setCookie('feature', feature, {
             maxAge: 43200,
             path: '/',
         })
+        }
+
+        
     }
 
 
