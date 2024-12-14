@@ -14,7 +14,7 @@ const Login = () => {
 
   
   useEffect(()=>{
-    console.log(credential)
+    // console.log(credential)
     if(credential){
       setCookie('credential',credential)
       router.replace('/',{scroll:false})
@@ -47,9 +47,9 @@ const Login = () => {
                     picture:picture,
                     credential:credential.toString()
                     }
-                    console.log(user)
+                    // console.log(user)
 
-                    console.log(credentialResponse);
+                    // console.log(credentialResponse);
                     await setCookie('credential',user)
                     router.replace('/',{scroll:false})
                   }
