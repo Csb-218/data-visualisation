@@ -5,18 +5,18 @@
 import  HorBar  from "@/components/charts/hor_bar";
 import  Line_chart  from "@/components/charts/line_chart";
 import UserCard from "@/components/miscellaneous/UserCard";
-// import Link from "next/link";
-import {googleLogout } from '@react-oauth/google';
-import {Button} from '@/components/ui/button'
-import {deleteCookie} from 'cookies-next'
-import {useRouter} from 'next/navigation'
 import CookieModal from '@/components/miscellaneous/CookieModal'
-
+import {Button} from '@/components/ui/button'
+import  {deleteCookie} from 'cookies-next'
+import { googleLogout } from "@react-oauth/google";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
 
+
    const router = useRouter()
 
+   
   // if (isLoading) return <div>Loading...</div>;
 
   // if (!user) redirect("/api/auth/login");
@@ -31,12 +31,12 @@ export default function Home() {
           <CookieModal />
           <UserCard />
 
-          <Button onClick={()=>{
+           <Button onClick={()=>{
             deleteCookie('credential')
             googleLogout()
             router.refresh()
           }
-            }>Logout</Button>
+            }>Logout</Button> 
 
 
           <HorBar />
