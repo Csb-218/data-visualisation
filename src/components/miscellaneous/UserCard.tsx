@@ -19,7 +19,7 @@ const UserCard = () => {
 
       if (credential && !user) {
         const user:user = JSON.parse(credential)
-        console.log(user)
+        // console.log(user)
         setUser(user)
       }
     }

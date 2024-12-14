@@ -58,7 +58,7 @@ export function RadioDropDownGender() {
         <Button variant="outline">{!selectedGender? "Gender" : selectedGender}</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
+        <DropdownMenuLabel>Select Gender</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuRadioGroup value={selectedGender?selectedGender:'Gender'} onValueChange={setGender}>
           <DropdownMenuRadioItem value="Gender" onClick={() => set_Gender(null)}>All</DropdownMenuRadioItem>
