@@ -188,7 +188,7 @@ export function VerticalLineChart() {
         if (selectedFeature) {
 
             const options = {
-                baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+                baseURL: `${process.env.AUTH0_BASE_URL}${process.env.NEXT_PUBLIC_BASE_URL}`,
                 method: 'get',
                 params: {},
                 url: `/time_spent/${selectedFeature.feature}`
