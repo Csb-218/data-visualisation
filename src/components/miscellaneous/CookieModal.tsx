@@ -14,7 +14,6 @@ const ModalActionButtons = () => {
 
         if (preference) {
 
-        
             setCookie('age','',{
                 maxAge:43200,
                 path:'/'

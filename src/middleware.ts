@@ -1,22 +1,30 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
-// import axios from 'axios'
- 
+import { NextResponse, NextRequest } from 'next/server'
+
+
+// This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
 
-  const response:NextResponse = NextResponse.next();
+   const pathname =  request.nextUrl.pathname
+   const credential =  request.cookies.get('credential')
+   const response =  NextResponse.next()
+
+
+   if(!credential){
+
+      if(pathname === '/') return NextResponse.redirect(new URL(`${process.env.AUTH0_BASE_URL}/auth`))
+      
+      return response
+   } 
+
   
-  const isAuthenticated = request.cookies.get('appSession')
-
-  // if not authenticated
-  if(!isAuthenticated){
-    return NextResponse.redirect(new URL(`${process.env.AUTH0_BASE_URL}/api/auth/login`,request.url))
-  } 
-    return response
-
+   return response
 
 }
 
+// See "Matching Paths" below to learn more
 export const config = {
-    matcher: '/',
-  }
+    matcher: [
+        // '/video/:id*','/channel/:channelId*','/category/:category*','/search/:search_query*'
+        '/((?!api|_next/static|_next/image|favicon.ico).*)'
+    ],
+}

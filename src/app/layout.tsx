@@ -1,8 +1,9 @@
-import { UserProvider } from '@auth0/nextjs-auth0/client';
+
 import type { Metadata } from "next";
 import StoreProvider from './storeProvider'
 import localFont from "next/font/local";
 import "./globals.css";
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,22 +23,22 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <UserProvider>
-        <StoreProvider>
+      <StoreProvider>
+        <GoogleOAuthProvider clientId="218070191450-0bd5g1f1blsr3erb8hl7a8ld0i9odr0i.apps.googleusercontent.com">
            <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-        </StoreProvider>
-        
-      </UserProvider>
-     
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          >
+            {children}
+          </body>
+        </GoogleOAuthProvider>
+      </StoreProvider>
+
+
     </html>
   );
 }

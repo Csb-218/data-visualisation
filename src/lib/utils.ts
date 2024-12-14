@@ -21,15 +21,29 @@ export function getRandomHexColor() {
   return `#${randomColor.padStart(6, '0')}`;
 }
 
-export const updateQueryParam = (key: string, value: string ) => {
+export const updateQueryParam = (key: string, value: string ):string => {
   const url = new URL(window.location.href);
   url.searchParams.set(key, value);
   return url.toString();
 };
 
-export const removeQueryParam = (key: string) => {
+export const removeQueryParam = (key: string):string => {
   const url = new URL(window.location.href);
   url.searchParams.delete(key);
   // console.log(url,key,url.toString())
   return url.toString();
 };
+
+export function generateRandomString(length:number):string {
+  const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  const randomValues = new Uint8Array(length);
+  crypto.getRandomValues(randomValues);
+
+  let result = "";
+  for (let i = 0; i < length; i++) {
+    const index = randomValues[i] % charset.length;
+    result += charset.charAt(index);
+  }
+
+  return result;
+}
