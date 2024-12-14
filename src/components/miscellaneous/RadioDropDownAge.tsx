@@ -18,7 +18,7 @@ import { updateQueryParam,removeQueryParam } from "@/lib/utils"
 import {useDispatch,useSelector} from 'react-redux'
 import {AppDispatch,RootState} from '@/lib/store'
 import {setAge} from '@/lib/store/barChartSlice'
-import {setCookie} from 'cookies-next'
+import {setCookie,hasCookie} from 'cookies-next'
 
 export function RadioDropDownAge() {
 
@@ -30,24 +30,17 @@ export function RadioDropDownAge() {
 
   const set_Age = (age:string | null) =>{
 
-    if(age){
-      const url =  updateQueryParam('age', age ) 
-      dispatch(setAge(age))
-      router.push(url,{scroll:false})
+    const url:string = (age ?  updateQueryParam('age', age )  : removeQueryParam('age'));
+    dispatch(setAge(age))
+    router.push(url,{scroll:false})
+
+    if(hasCookie('age')){
+       // if cookie permitted
       setCookie('age',age,{
         maxAge:43200,
         path:'/',
       })
-    }else{
-      const url =  removeQueryParam('age')
-      dispatch(setAge(age))
-      router.push(url,{scroll:false})
-      setCookie('age','',{
-        maxAge:43200,
-        path:'/',
-      })
     }
-   
   }
 
 
