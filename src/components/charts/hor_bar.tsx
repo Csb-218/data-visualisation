@@ -72,7 +72,7 @@ const chartConfig = {
     useEffect(() => {
 
         async function fetchFeatures() {
-            const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/features`)
+            const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/features`)
             const features: feature[] = await data.json()
             features.reverse().forEach((feature: { fill: string }) => feature.fill = getRandomHexColor())
             dispatch(setFeatures(features))

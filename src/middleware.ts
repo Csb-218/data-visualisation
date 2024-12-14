@@ -11,7 +11,7 @@ export async function middleware(request: NextRequest) {
 
    if(!credential){
 
-      if(pathname === '/') return NextResponse.redirect(new URL(`${process.env.AUTH0_BASE_URL}/auth`))
+      if(pathname === '/') return NextResponse.redirect(new URL(`${process.env.NEXT_PUBLIC_BASE_URL}/auth`))
       
       return response
    } 
