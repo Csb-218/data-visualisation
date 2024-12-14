@@ -6,7 +6,7 @@ import { open } from 'sqlite';
 async function openDb(){
      
     const connection = await open({
-      filename: process.env.NEXT_PUBLIC_DATABASE_URL,
+      filename: `${process.env.NEXT_PUBLIC_DATABASE_URL}`,
       driver: sqlite3.Database,
      });
 
